@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+    <title>sample</title>
+</head>
+<body>
+<input type="button" id="gonode" value="通信">
+
+<script>
+    $(function(){
+        $('gonode').click(function(){
+            alert('');
+            $.ajax({
+                async: false,
+                url: 'http://localhost:8124',
+                type: 'post',
+                data:{"name": "musa"},
+                dataType: 'json'
+            }).done(function(res){
+                console.debug(res);
+            }).fail(function(xhr, status, error){
+                alert(status);
+            });
+
+        });
+    });
+</script>
+</body>
+</html>
